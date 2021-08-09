@@ -13,7 +13,7 @@ export class Department extends Component{
     }
 
     refreshList(){
-        fetch(process.env.REACT_APP_API+'department')
+        fetch('http://127.0.0.1:8000/'+'department')
         .then(response=>response.json())
         .then(data=>{
             this.setState({deps:data});
@@ -30,7 +30,7 @@ export class Department extends Component{
 
     deleteDep(depid){
         if(window.confirm('Are you sure?')){
-            fetch(process.env.REACT_APP_API+'department/'+depid,{
+            fetch('http://127.0.0.1:8000/'+'department/'+depid,{
                 method:'DELETE',
                 header:{'Accept':'application/json',
             'Content-Type':'application/json'}

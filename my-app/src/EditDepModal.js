@@ -9,7 +9,7 @@ export class EditDepModal extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        fetch(process.env.REACT_APP_API+'department',{
+        fetch('http://127.0.0.1:8000/'+'department',{
             method:'PUT',
             headers:{
                 'Accept':'application/json',

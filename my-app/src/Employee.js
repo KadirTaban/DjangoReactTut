@@ -1,6 +1,5 @@
 import React,{Component} from 'react';
 import {Table} from 'react-bootstrap';
-
 import {Button,ButtonToolbar} from 'react-bootstrap';
 import {AddEmpModal} from './AddEmpModal';
 import {EditEmpModal} from './EditEmpModal';
@@ -13,7 +12,7 @@ export class Employee extends Component{
     }
 
     refreshList(){
-        fetch(process.env.REACT_APP_API+'employee')
+        fetch('http://127.0.0.1:8000/'+'employee')
         .then(response=>response.json())
         .then(data=>{
             this.setState({emps:data});
@@ -30,7 +29,7 @@ export class Employee extends Component{
 
     deleteEmp(empid){
         if(window.confirm('Are you sure?')){
-            fetch(process.env.REACT_APP_API+'employee/'+empid,{
+            fetch('http://127.0.0.1:8000/'+'employee/'+empid,{
                 method:'DELETE',
                 header:{'Accept':'application/json',
             'Content-Type':'application/json'}

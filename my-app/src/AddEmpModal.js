@@ -10,10 +10,10 @@ export class AddEmpModal extends Component{
     }
 
     photofilename = "anonymous.png";
-    imagesrc = process.env.REACT_APP_PHOTOPATH+this.photofilename;
+    imagesrc = 'http://127.0.0.1:8000/media/'+this.photofilename;
 
     componentDidMount(){
-        fetch(process.env.REACT_APP_API+'department')
+        fetch('http://127.0.0.1:8000/'+'department')
         .then(response=>response.json())
         .then(data=>{
             this.setState({deps:data});
@@ -22,7 +22,7 @@ export class AddEmpModal extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        fetch(process.env.REACT_APP_API+'employee',{
+        fetch('http://127.0.0.1:8000/'+'employee',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -57,13 +57,13 @@ export class AddEmpModal extends Component{
             event.target.files[0].name
         );
 
-        fetch(process.env.REACT_APP_API+'Employee/SaveFile',{
+        fetch('http://127.0.0.1:8000/'+'Employee/SaveFile',{
             method:'POST',
             body:formData
         })
         .then(res=>res.json())
         .then((result)=>{
-            this.imagesrc=process.env.REACT_APP_PHOTOPATH+result;
+            this.imagesrc='http://127.0.0.1:8000/media/'+result;
         },
         (error)=>{
             alert('Failed');

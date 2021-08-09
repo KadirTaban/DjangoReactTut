@@ -10,10 +10,10 @@ export class EditEmpModal extends Component{
     }
 
     photofilename = "anonymous.png";
-    imagesrc = process.env.REACT_APP_PHOTOPATH+this.photofilename;
+    imagesrc = 'http://127.0.0.1:8000/media/'+this.photofilename;
 
     componentDidMount(){
-        fetch(process.env.REACT_APP_API+'department')
+        fetch('http://127.0.0.1:8000/'+'department')
         .then(response=>response.json())
         .then(data=>{
             this.setState({deps:data});
@@ -22,7 +22,7 @@ export class EditEmpModal extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        fetch(process.env.REACT_APP_API+'employee',{
+        fetch('http://127.0.0.1:8000/'+'employee',{
             method:'PUT',
             headers:{
                 'Accept':'application/json',
@@ -57,7 +57,7 @@ export class EditEmpModal extends Component{
             event.target.files[0].name
         );
 
-        fetch(process.env.REACT_APP_API+'Employee/SaveFile',{
+        fetch('http://127.0.0.1:8000/'+'Employee/SaveFile',{
             method:'POST',
             body:formData
         })
@@ -137,7 +137,7 @@ centered
 
             <Col sm={6}>
                 <Image width="200px" height="200px" 
-                src={process.env.REACT_APP_PHOTOPATH+this.props.photofilename}/>
+                src={'http://127.0.0.1:8000/media/'+this.props.photofilename}/>
                 <input onChange={this.handleFileSelected} type="File"/>
             </Col>
         </Row>
