@@ -63,7 +63,7 @@ export class EditEmpModal extends Component{
         })
         .then(res=>res.json())
         .then((result)=>{
-            this.imagesrc=process.env.REACT_APP_PHOTOPATH+result;
+            this.imagesrc='http://127.0.0.1:8000/media/'+result;
         },
         (error)=>{
             alert('Failed');
